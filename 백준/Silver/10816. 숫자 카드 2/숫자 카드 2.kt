@@ -28,29 +28,32 @@ import java.util.*;
 //    }
 
 // 이진탐색 
-fun main() = with(Scanner(System.`in`)){
+fun main() = with(Scanner(System.`in`)) {
+   val strBuilder = StringBuilder();
 
-    val strBuilder = StringBuilder()
-    val N = nextInt()
-    val array = IntArray(N)
+   val n = nextInt()
 
-    for (i in 0 until N){
-        array[i] = nextInt()
-    }
-
-    Arrays.sort(array)
-
-    val M = nextInt()
-
-    for (i in 0 until M){
-        val key = nextInt()
-
-        strBuilder.append(upperBound(array, key) - lowerBound(array, key)).append(' ')
-    }
-    println(strBuilder)
+   val inputN = IntArray(n)
+    
+   for(i in 0 until n) {
+      inputN[i] = nextInt()
+   }
+   
+   Arrays.sort(inputN)
+    
+   val m = nextInt()
+    
+   for(i in 0 until m) {
+      val key = nextInt() 
+       
+      strBuilder.append(upperBinarySeach(inputN, key) - lowerBinarySeacrh(inputN, key))
+       .append(' ')
+   }
+    
+   println(strBuilder)
 }
 
-fun lowerBound(array: IntArray, key: Int): Int {
+fun lowerBinarySeacrh(array: IntArray, key: Int): Int {
     var left = 0
     var right = array.size
 
@@ -67,7 +70,7 @@ fun lowerBound(array: IntArray, key: Int): Int {
     return left
 }
 
-fun upperBound(array: IntArray, key: Int): Int {
+fun upperBinarySeach(array: IntArray, key: Int): Int {
     var left = 0
     var right = array.size
 
@@ -83,4 +86,3 @@ fun upperBound(array: IntArray, key: Int): Int {
     }
     return left
 }
-
