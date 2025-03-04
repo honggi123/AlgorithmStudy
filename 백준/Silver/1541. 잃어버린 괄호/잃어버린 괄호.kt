@@ -1,11 +1,25 @@
-import java.util.*;
-
-fun main() = with(System.`in`.bufferedReader()) {
-    val strList = readLine().split("-")
-    var firstNum = strList[0].split('+').sumOf{ it.toInt() }
+fun main(){
+    val br = System.`in`.bufferedReader()
+    val bw = System.out.bufferedWriter()
     
-    for(i in 1 until strList.size){
-        firstNum -= strList[i].split('+').sumOf{ it.toInt() }
+    val list = mutableListOf<Int>()
+    
+    br.readLine().split("-").forEach { s ->
+           var sum = 0                          
+           s.split("+").forEach {
+              sum += it.toInt()
+           }
+           list.add(sum)                           
     }
-    println(firstNum)
+    
+    var result = list[0] 
+    
+    for (i in 1 until list.size) {
+        result -= list[i]
+    }
+    
+    bw.append("${result}")
+    
+    bw.flush()
+    bw.close()
 }
