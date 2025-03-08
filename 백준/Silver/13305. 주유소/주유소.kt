@@ -9,12 +9,12 @@ fun main(){
    var minPrice = priceArray[0]
        
    priceArray.forEachIndexed { index, price ->
-       if(minPrice < price) {
+       if(price < minPrice){
            minPrice = price
        }
-       if(index != priceArray.size - 1){
-          sum += minPrice * lengthArray[index]   
-       }                 
+       if(index <= lengthArray.size-1){
+           sum += minPrice * lengthArray[index]                
+       }                    
    }
    bw.append("${sum}")
    bw.flush()
